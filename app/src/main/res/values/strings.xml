@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">finalYear</string>
+    <string name="welcome">Welcome to FastHire App</string>
+    <string name="join">Join our community as</string>
+    <string name="provider">Provider</string>
+    <string name="cinfo">Customer</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="signup">Sign up</string>
+    <string name="create">Create</string>
+    <string name="dont">Dont have an account?</string>
+    <string name="name">Name</string>
+    <string name="mobile">Mobile No.</string>
+    <string name="confirm">Confirm Password</string>
+    <string name="gender">Gender</string>
+    <string name="dob">Date of birth</string>
+    <string name="construction">Construction</string>
+    <string name="plumbing">Plumbing/Electrical</string>
+    <string name="carpentry">Carpentry</string>
+    <string name="heavy">Heavy Works</string>
+    <string name="submit">Submit</string>
+    <string name="skills">Skills</string>
+    <string name="search">Search</string>
+    <string name="rating">Rating</string>
+    <string name="job">Job Description</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="cjob">Create Job</string>
+    <string name="sskill">Search Skill</string>
+</resources>
