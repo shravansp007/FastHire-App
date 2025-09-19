@@ -3,18 +3,18 @@ package com.example.finalyear;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +23,7 @@ public class pcreatejob extends AppCompatActivity {
 
     EditText nameEdit, mobileEdit, jobEdit, dateEdit, fromTimeEdit, toTimeEdit;
     Button createBtn;
+    CheckBox carpentryCheck, constructionCheck, plumbingCheck, heavyCheck;
 
     FirebaseFirestore db;
 
@@ -31,7 +32,7 @@ public class pcreatejob extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pcreatejob);
 
-
+        // Inputs
         nameEdit = findViewById(R.id.editTextText18);
         mobileEdit = findViewById(R.id.editTextText19);
         jobEdit = findViewById(R.id.editTextText20);
@@ -40,10 +41,15 @@ public class pcreatejob extends AppCompatActivity {
         toTimeEdit = findViewById(R.id.editTextText24);
         createBtn = findViewById(R.id.button12);
 
+        // Checkboxes
+        carpentryCheck = findViewById(R.id.checkBox9);
+        constructionCheck = findViewById(R.id.checkBox10);
+        plumbingCheck = findViewById(R.id.checkBox12);
+        heavyCheck = findViewById(R.id.checkBox11);
 
         db = FirebaseFirestore.getInstance();
 
-
+        // Date Picker
         dateEdit.setOnClickListener(v -> {
             Calendar c = Calendar.getInstance();
             int year = c.get(Calendar.YEAR);
@@ -58,7 +64,7 @@ public class pcreatejob extends AppCompatActivity {
             datePickerDialog.show();
         });
 
-
+        // From Time Picker
         fromTimeEdit.setOnClickListener(v -> {
             Calendar c = Calendar.getInstance();
             int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -72,7 +78,7 @@ public class pcreatejob extends AppCompatActivity {
             timePickerDialog.show();
         });
 
-
+        // To Time Picker
         toTimeEdit.setOnClickListener(v -> {
             Calendar c = Calendar.getInstance();
             int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -86,7 +92,7 @@ public class pcreatejob extends AppCompatActivity {
             timePickerDialog.show();
         });
 
-
+        // Create Job Button
         createBtn.setOnClickListener(v -> {
             String name = nameEdit.getText().toString().trim();
             String mobile = mobileEdit.getText().toString().trim();
@@ -100,6 +106,14 @@ public class pcreatejob extends AppCompatActivity {
                 return;
             }
 
+            // Collect selected skills
+            ArrayList<String> skills = new ArrayList<>();
+            if (carpentryCheck.isChecked()) skills.add("Carpentry");
+            if (constructionCheck.isChecked()) skills.add("Construction");
+            if (plumbingCheck.isChecked()) skills.add("Plumbing");
+            if (heavyCheck.isChecked()) skills.add("Heavy");
+
+            // Job Data
             Map<String, Object> jobData = new HashMap<>();
             jobData.put("name", name);
             jobData.put("mobile", mobile);
@@ -107,6 +121,7 @@ public class pcreatejob extends AppCompatActivity {
             jobData.put("date", date);
             jobData.put("from", from);
             jobData.put("to", to);
+            jobData.put("skills", skills);  // <-- Add selected skills
 
             db.collection("jobs")
                     .add(jobData)
@@ -117,4 +132,5 @@ public class pcreatejob extends AppCompatActivity {
         });
     }
 }
+
 

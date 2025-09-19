@@ -29,4 +29,14 @@
     <string name="to">To</string>
     <string name="cjob">Create Job</string>
     <string name="sskill">Search Skill</string>
+    <string name="profile">Profile</string>
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
+    <string name="notifications">Notifications</string>
+    <string name="jobs">Jobs Available</string>
+    <string name="invite">Invite</string>
+    <string name="done">Done</string>
+    <string name="accept">Accept</string>
+    <string name="deny">Deny</string>
+
 </resources>

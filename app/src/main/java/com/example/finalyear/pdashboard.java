@@ -35,7 +35,9 @@ public class pdashboard extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         cinfoList = new ArrayList<>();
-        adapter = new crecycler(cinfoList);
+
+        // ✅ Pass context + list to adapter
+        adapter = new crecycler(this, cinfoList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
@@ -58,17 +60,23 @@ public class pdashboard extends AppCompatActivity {
 
     private String getSkillField(String skill) {
         switch (skill) {
-            case "construction": return "checkbox1";
-            case "Construction": return "checkbox1";
-            case "Plumbing": return "checkbox2";
-            case "plumbing": return "checkbox2";
-            case "Electrical": return "checkbox2";
-            case "electrical": return "checkbox2";
-            case "heavy works": return "checkbox3";
-            case "Heavy works": return "checkbox3";
-            case "Carpentry": return "checkbox4";
-            case "carpentry": return "checkbox4";
-            default: return null;
+            case "construction":
+            case "Construction":
+                return "checkbox1";
+            case "plumbing":
+            case "Plumbing":
+                return "checkbox2";
+            case "electrical":
+            case "Electrical":
+                return "checkbox3";
+            case "heavy works":
+            case "Heavy works":
+                return "checkbox4";
+            case "carpentry":
+            case "Carpentry":
+                return "checkbox5";
+            default:
+                return null;
         }
     }
 
@@ -89,7 +97,13 @@ public class pdashboard extends AppCompatActivity {
                         Toast.makeText(this, "No customers found with that skill", Toast.LENGTH_SHORT).show();
                     }
                 })
-                .addOnFailureListener(e -> Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                .addOnFailureListener(e ->
+                        Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                );
     }
 }
+
+
+
+
 

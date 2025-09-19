@@ -18,6 +18,26 @@
             android:exported="false"
             android:theme="@style/Theme.FinalYear" />
         <activity
+            android:name=".pinvite"
+            android:exported="false"
+            android:theme="@style/Theme.FinalYear" />
+        <activity
+            android:name=".cnotifications"
+            android:exported="false"
+            android:theme="@style/Theme.FinalYear" />
+        <activity
+            android:name=".cjobsavai"
+            android:exported="false"
+            android:theme="@style/Theme.FinalYear" />
+        <activity
+            android:name=".cprofile"
+            android:exported="false"
+            android:theme="@style/Theme.FinalYear" />
+        <activity
+            android:name=".pprofile"
+            android:exported="false"
+            android:theme="@style/Theme.FinalYear" />
+        <activity
             android:name=".pjob"
             android:exported="false"
             android:theme="@style/Theme.FinalYear" />

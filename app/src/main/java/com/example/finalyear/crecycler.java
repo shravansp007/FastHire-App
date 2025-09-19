@@ -1,18 +1,24 @@
 package com.example.finalyear;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 public class crecycler extends RecyclerView.Adapter<crecycler.ViewHolder> {
 
     private List<cinfo> customerList;
+    private Context context;
 
-    public crecycler(List<cinfo> cinfoList) {
+    public crecycler(Context context, List<cinfo> cinfoList) {
+        this.context = context;
         this.customerList = cinfoList;
     }
 
@@ -21,9 +27,9 @@ public class crecycler extends RecyclerView.Adapter<crecycler.ViewHolder> {
 
         public ViewHolder(View view) {
             super(view);
-            tvName = view.findViewById(R.id.textView21);
-            tvMobile = view.findViewById(R.id.textView22);
-            tvRating = view.findViewById(R.id.textView25);
+            tvName = view.findViewById(R.id.nameText);
+            tvMobile = view.findViewById(R.id.mobileText);
+            tvRating = view.findViewById(R.id.ratingText);
         }
     }
 
@@ -40,6 +46,15 @@ public class crecycler extends RecyclerView.Adapter<crecycler.ViewHolder> {
         holder.tvName.setText("Name: " + cinfo.getName());
         holder.tvMobile.setText("Mobile: " + cinfo.getMobile());
         holder.tvRating.setText("Rating: " + cinfo.getRating());
+
+        // ✅ Handle click → open pinvite.java
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, pinvite.class);
+            intent.putExtra("name", cinfo.getName());
+            intent.putExtra("mobile", cinfo.getMobile());
+            intent.putExtra("rating", cinfo.getRating());
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -47,3 +62,10 @@ public class crecycler extends RecyclerView.Adapter<crecycler.ViewHolder> {
         return customerList.size();
     }
 }
+
+
+
+
+
+
+

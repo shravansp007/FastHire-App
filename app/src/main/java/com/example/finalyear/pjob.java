@@ -14,6 +14,16 @@ public class pjob extends AppCompatActivity {
 
         Button btnJob = findViewById(R.id.button11);
         Button btnDashboard = findViewById(R.id.button10);
+        Button btnProfile = findViewById(R.id.button13);
+
+
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(pjob.this, pprofile.class);
+                startActivity(intent);
+            }
+        });
 
         btnJob.setOnClickListener(new View.OnClickListener() {
             @Override
