@@ -15,7 +15,7 @@ public class pjob extends AppCompatActivity {
         Button btnJob = findViewById(R.id.button11);
         Button btnDashboard = findViewById(R.id.button10);
         Button btnProfile = findViewById(R.id.button13);
-
+        Button buttonNotifications = findViewById(R.id.button23);
 
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,5 +40,14 @@ public class pjob extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        buttonNotifications.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(pjob.this, pnotifications.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

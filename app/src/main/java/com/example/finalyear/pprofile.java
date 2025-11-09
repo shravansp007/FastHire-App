@@ -125,6 +125,9 @@ public class pprofile extends AppCompatActivity {
         etDOB.setEnabled(enabled);
         etPassword.setEnabled(enabled);
     }
+
+    public static class pnotifications {
+    }
 }
 
 

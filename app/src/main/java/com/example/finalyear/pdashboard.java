@@ -36,13 +36,12 @@ public class pdashboard extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         cinfoList = new ArrayList<>();
 
-        // ✅ Pass context + list to adapter
         adapter = new crecycler(this, cinfoList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
         searchButton.setOnClickListener(view -> {
-            String query = searchView.getQuery().toString().trim().toLowerCase();
+            String query = searchView.getQuery().toString().trim();
             if (query.isEmpty()) {
                 Toast.makeText(this, "Enter a skill to search", Toast.LENGTH_SHORT).show();
                 return;
@@ -59,21 +58,19 @@ public class pdashboard extends AppCompatActivity {
     }
 
     private String getSkillField(String skill) {
-        switch (skill) {
+        // normalize case-insensitively
+        String s = skill.toLowerCase();
+        switch (s) {
             case "construction":
-            case "Construction":
                 return "checkbox1";
             case "plumbing":
-            case "Plumbing":
                 return "checkbox2";
             case "electrical":
-            case "Electrical":
                 return "checkbox3";
             case "heavy works":
-            case "Heavy works":
+            case "heavy":
                 return "checkbox4";
             case "carpentry":
-            case "Carpentry":
                 return "checkbox5";
             default:
                 return null;
@@ -89,7 +86,12 @@ public class pdashboard extends AppCompatActivity {
                     for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
                         String name = doc.getString("name");
                         String mobile = doc.getString("mobile");
-                        cinfoList.add(new cinfo(name, mobile, 5.0f));
+
+                        // ⭐ Read rating if present; default to 0
+                        Double r = doc.getDouble("rating");
+                        float rating = (r == null) ? 5f : r.floatValue();
+
+                        cinfoList.add(new cinfo(name, mobile, rating));
                     }
                     adapter.notifyDataSetChanged();
 
@@ -102,6 +104,7 @@ public class pdashboard extends AppCompatActivity {
                 );
     }
 }
+
 
 
 

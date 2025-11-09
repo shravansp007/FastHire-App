@@ -14,8 +14,8 @@ import java.util.List;
 
 public class crecycler extends RecyclerView.Adapter<crecycler.ViewHolder> {
 
-    private List<cinfo> customerList;
-    private Context context;
+    private final List<cinfo> customerList;
+    private final Context context;
 
     public crecycler(Context context, List<cinfo> cinfoList) {
         this.context = context;
@@ -42,17 +42,18 @@ public class crecycler extends RecyclerView.Adapter<crecycler.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        cinfo cinfo = customerList.get(position);
-        holder.tvName.setText("Name: " + cinfo.getName());
-        holder.tvMobile.setText("Mobile: " + cinfo.getMobile());
-        holder.tvRating.setText("Rating: " + cinfo.getRating());
+        cinfo item = customerList.get(position);
+        holder.tvName.setText("Name: " + item.getName());
+        holder.tvMobile.setText("Mobile: " + item.getMobile());
+        holder.tvRating.setText("Rating: " + item.getRating());
 
-        // ✅ Handle click → open pinvite.java
+        // Open pinvite in normal mode from search (rateOnly = false)
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, pinvite.class);
-            intent.putExtra("name", cinfo.getName());
-            intent.putExtra("mobile", cinfo.getMobile());
-            intent.putExtra("rating", cinfo.getRating());
+            intent.putExtra("name", item.getName());
+            intent.putExtra("mobile", item.getMobile());
+            intent.putExtra("rating", item.getRating());  // ⭐ pass actual rating (0 if none yet)
+            intent.putExtra("rateOnly", false);
             context.startActivity(intent);
         });
     }
@@ -62,6 +63,7 @@ public class crecycler extends RecyclerView.Adapter<crecycler.ViewHolder> {
         return customerList.size();
     }
 }
+
 
 
 

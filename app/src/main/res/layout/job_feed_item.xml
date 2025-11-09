@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/notifyName"
+            android:id="@+id/feedEmployerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Employer Name"
@@ -21,28 +21,28 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/notifyMobile"
+            android:id="@+id/feedEmployerMobile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Employer Mobile" />
+            android:text="Mobile" />
 
         <TextView
-            android:id="@+id/notifyDate"
+            android:id="@+id/feedDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Date" />
 
         <TextView
-            android:id="@+id/notifyFrom"
+            android:id="@+id/feedFrom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="From Time" />
+            android:text="From" />
 
         <TextView
-            android:id="@+id/notifyTo"
+            android:id="@+id/feedTo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="To Time" />
+            android:text="To" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -51,19 +51,17 @@
             android:layout_marginTop="8dp">
 
             <Button
-                android:id="@+id/btnAccept"
+                android:id="@+id/btnInterested"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Accept" />
+                android:text="Interested" />
 
             <Button
-                android:id="@+id/btnDeny"
+                android:id="@+id/btnNotInterested"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Deny"
+                android:text="Not interested"
                 android:layout_marginStart="12dp" />
-
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
-

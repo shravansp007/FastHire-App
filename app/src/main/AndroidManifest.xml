@@ -18,6 +18,10 @@
             android:exported="false"
             android:theme="@style/Theme.FinalYear" />
         <activity
+            android:name=".pnotifications"
+            android:exported="false"
+            android:theme="@style/Theme.FinalYear" />
+        <activity
             android:name=".pinvite"
             android:exported="false"
             android:theme="@style/Theme.FinalYear" />
