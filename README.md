@@ -79,7 +79,8 @@ Android development, Firebase integration & production-level debugging.
 📚 Journal: **IJERT (International Journal of Engineering Research & Technology)**  
 📅 Year: 2025  
 
-*(Paper available on request or portfolio link)*
+Read Published Paper on IJERT:
+https://www.ijert.org/labour-employment-synchronization-app-fast-hire
 
 ---
 
